@@ -1,0 +1,98 @@
+import pandas as pd # pd é um apelido para pandas, mais curto.
+
+df = pd.read_csv("https://raw.githubusercontent.com/guilhermeonrails/data-jobs/refs/heads/main/salaries.csv") # read é uma funsão, serve para ler o link com os dados.
+
+df.head(10) # head é uma funsão, serve para ler ou dar uma olhadinha em algumas linhas do dados.
+
+df.info() #info é uma funsão , serve para pegar informação, dar infotmação.
+
+df.describe() # describe é uma funsão, serve para ter uma descrição mais aprofundada, entender melhor quais são as informações que temos na nossa base de dados.
+
+df.shape # shape é um atributo,ele traz a dimensão desse arquivo. ou seja sao 133349 linhas e 11 colunas
+
+linhas, colunas = df.shape[0], df.shape [1] # server para fazer um relatório.
+print("Numeros de linhas:", linhas)
+print("Numeros de colunas:", colunas)
+
+df.columns
+
+df.rename(columns={
+    'work_year': 'ano_trabalho',
+    'experience_level': 'nivel_experiencia',
+    'employment_type': 'tipo_emprego',
+    'job_title': 'cargo',
+    'salary': 'salario',
+    'salary_currency': 'moeda_salario',
+    'salary_in_usd': 'salario_em_usd',
+    'employee_residence': 'residencia_empregado',
+    'remote_ratio': 'taxa_remoto',
+    'company_location': 'localizacao_empresa',
+    'company_size': 'tamanho_empresa'
+}, inplace=True)
+
+df["senioridade"].value_counts() # SE = senior. MI = pleno. EN = junior. EX = outros
+
+senioridade = {
+    'SE': 'Senior',
+    'MI': 'Pleno',
+    'EN': 'Junior',
+    'EX': 'Executivo'
+}
+df['senioridade'] = df['senioridade'].replace(senioridade)
+df["senioridade"].value_counts()
+
+df["contrato"].value_counts() # FT = quem trabalha em horário integral. CT = contrato temporario. PT = trabalho de meio periodo. FL = fleelancer.
+
+contrato = {
+    'FT': 'Tempo Integral',
+    'CT': 'Contrato Temporário',
+    'PT': 'Meio Período',
+    'FL': 'Freelancer'
+}
+df['contrato'] = df['contrato'].replace(contrato)
+df["contrato"].value_counts()
+
+df["remoto"].value_counts() # numero 0 são os trabalho presencial. numero 100 é trabalho remoto. numero 50 vagas hibridas
+
+remoto = {
+    0: 'Presencial',
+    100: 'Remoto',
+    50: 'Híbrido'
+}
+df['remoto'] = df['remoto'].replace(remoto)
+df["remoto"].value_counts()
+
+df["tamanho_empresa"].value_counts() # M = empresa tamanho medio. L = empresa tamanho grande. S = empresa tamanho pequena.
+
+tamanho_empresa = {
+    'M': 'Médio',
+    'L': 'Grande',
+    'S': 'Pequeno'
+}
+df['tamanho_empresa'] = df['tamanho_empresa'].replace(tamanho_empresa)
+df["tamanho_empresa"].value_counts()
+
+df["cargo"].value_counts() 
+
+cargo = {
+    'Data Scientist': 'Cientista de Dados',
+    'Data Analyst': 'Analista de Dados',
+    'Data Engineer': 'Engenheiro de Dados',
+    'Machine Learning Scientist': 'Cientista de Dados',
+    'Research Scientist': 'Cientista de Dados',
+    'Research Scientist': 'Cientista de Dados',
+    'Data Architect': 'Engenheiro de Dados',
+
+}
+df['cargo'] = df['cargo'].replace(cargo)
+df["cargo"].value_counts()
+
+df.head()
+
+df.describe(include="object") # include é uma informação, UNIQUE, significa que temos 4 valores unicos de senioridade (senior, pleno, junior e executivo). 4 tipos de contrato ... 386 cargos... etc... 
+# TOP, qual tipo de senioridade mais comum? Senior. Qual tipo de contrato mais comum? Tempo Integral. Qual tipo de moeda mais comum? UDS etc...
+# FREQ vê quantas vezes esse valor ta se repetindo , tipo , o senior apareceu 77241 vezes.
+
+
+ #traduza para português as categorias da coluna "" do dataframe d
+print(df)
