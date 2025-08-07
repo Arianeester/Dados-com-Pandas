@@ -4,7 +4,7 @@
 
 O pandas é a principal ferramenta para análise de dados em Python, e a biblioteca é amplamente utilizada no Google Colab.
 
-A flexibilidade de pandas permite a limpeza e organização dos dados, como remover ou preencher valores faltantes, renomear colunas e converter tipos de dados. Também é possível combinar DataFrames (como nesse repertório) e realizar operações de agrupamento para sumarizar informações.
+A flexibilidade de pandas permite a limpeza e organização dos dados, como remover ou preencher valores faltantes, renomear colunas e converter tipos de dados. Também é possível combinar DataFrames (como nesse repositório) e realizar operações de agrupamento para sumarizar informações.
 
 # Google Colab.
 
